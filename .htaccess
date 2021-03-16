@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteRule ^home Public/index.php [NC,QSA]
+
+    AddType text/css .css
+
+    RewriteCond %{SCRIPT_FILENAME} !-d
+    RewriteCond %{SCRIPT_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^((?!public/).*)$ Public/index.php [NC,QSA]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^((?!public/).*)$ Public/index.php [NC,QSA,L]
+
+    Options -Indexes
+</IfModule>
